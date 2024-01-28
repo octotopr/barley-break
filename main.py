@@ -77,6 +77,60 @@ radio02 = Radiobutton(
 # radio02["command"] = isCheckImage
 radio01.place(x=150, y=540)
 radio02.place(x=150, y=568)
+# ------image--------
+# field size
+n = 4
+m = 4
+pictureWidth = 400
+pictureHeight = 532
+widthPic = pictureWidth / n
+heightPic = pictureHeight / m
+fileName = [
+    "img1.png",
+    "img2.png",
+    "img3.png",
+    "img4.png",
+    "img5.png",
+    "img6.png",
+    "img7.png",
+    "img8.png",
+    "img9.png",
+    "img10.png",
+    "img11.png",
+    "img12.png",
+    "img13.png",
+    "img14.png",
+    "img15.png",
+    "img16.png",
+    "black.png",
+]
+imageBackground = []
+imageBackground01 = []
+imageBackground02 = []
+
+for name in fileName:
+    imageBackground01.append(PhotoImage(file="image01/" + name))
+    imageBackground02.append(PhotoImage(file="image02/" + name))
+
+blackImg = 16
+imageBackground = imageBackground01
+labelImage = []
+dataImage = []
+copyData = []
+
+for i in range(n):
+    labelImage.append([])
+    dataImage.append([])
+    copyData.append([])
+
+    for j in range(m):
+        dataImage[i].append(i * n + j)
+        copyData[i].append(i * n + j)
+        labelImage[i].append(Label(root, bg=back))
+        labelImage[i][j]["bd"] = 1
+        labelImage[i][j].place(x=10 + j * widthPic, y=10 + i * heightPic)
+        labelImage[i][j].bind("<Button-1>", lambda e, x=1, y=j: go(x, y))
+        labelImage[i][j]["image"] = imageBackground[dataImage[i][j]]
 
 # start game
 root.mainloop()
